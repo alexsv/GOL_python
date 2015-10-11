@@ -83,7 +83,19 @@ def test_next_state_empty():
    grid = grid.next()
    assert len(grid.get_active()) == 0
 
-def test_3near_doesnt_change():
+def test_get_ranges_no_active():
+   grid = Grid()
+   x1, y1, x2, y2 = grid.get_ranges()
+   assert (x1, y1, x2, y2) == (0, 0, 0, 0)
+   
+def test_get_ranges_some_active():
+   grid = Grid()
+   grid.set_active(-2, -1)
+   grid.set_active(2, 1)
+   x1, y1, x2, y2 = grid.get_ranges()
+   assert (x1, y1, x2, y2) == (-2, -1, 2, 1)
+
+def _test_3near_doesnt_change():
    grid = Grid()
    grid.set_active(self_x, self_y)
    grid.set_active(self_x + 1, self_y)

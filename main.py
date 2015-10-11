@@ -34,6 +34,11 @@ class Grid(object):
          return 0 
          
       raise Exception("!")
+   
+   def get_ranges(self):
+      all_x = {x for x, _ in self.get_active()}
+      all_y = {y for _, y in self.get_active()}
+      return min(all_x or {0}), min(all_y or {0}), max(all_x or {0}), max(all_y or {0})
          
    def next(self):
       grid = Grid()
