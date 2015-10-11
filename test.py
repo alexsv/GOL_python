@@ -95,7 +95,7 @@ def test_get_ranges_some_active():
    x1, y1, x2, y2 = grid.get_ranges()
    assert (x1, y1, x2, y2) == (-2, -1, 2, 1)
 
-def _test_3near_doesnt_change():
+def test_3near_doesnt_change():
    grid = Grid()
    grid.set_active(self_x, self_y)
    grid.set_active(self_x + 1, self_y)
@@ -104,6 +104,7 @@ def _test_3near_doesnt_change():
 
    grid = grid.next()
    active = grid.get_active()
+   
    assert len(active) == 4
    assert (self_x, self_y) in active 
    assert (self_x + 1, self_y) in active

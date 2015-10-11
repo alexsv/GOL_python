@@ -42,8 +42,12 @@ class Grid(object):
          
    def next(self):
       grid = Grid()
-      all_x = {x for x, _ in self.get_active()}
-      all_y = {y for _, y in self.get_active()}
+      x1, y1, x2, y2 = self.get_ranges()
+      x1, y1, x2, y2 = x1 - 1, y1 - 1, x2 + 1, y2 + 1
+      for y in range(y1, y2 + 1):
+         for x in range(x1, x2 + 1):
+            if self.get_new_state(x, y):
+               grid.set_active(x, y)
       return grid
 
    
