@@ -73,3 +73,27 @@ def test_empty_cell():
    state = grid.get_new_state(self_x, self_y)
    assert state == 0
    
+def test_next_state_is_grid():
+   grid = Grid()
+   grid = grid.next()
+   assert isinstance(grid, Grid)
+
+def test_next_state_empty():
+   grid = Grid()
+   grid = grid.next()
+   assert len(grid.get_active()) == 0
+
+def test_3near_doesnt_change():
+   grid = Grid()
+   grid.set_active(self_x, self_y)
+   grid.set_active(self_x + 1, self_y)
+   grid.set_active(self_x, self_y + 1)
+   grid.set_active(self_x + 1, self_y + 1)
+
+   grid = grid.next()
+   active = grid.get_active()
+   assert len(active) == 4
+   assert (self_x, self_y) in active 
+   assert (self_x + 1, self_y) in active
+   assert (self_x, self_y + 1) in active
+   assert (self_x + 1, self_y + 1) in active      

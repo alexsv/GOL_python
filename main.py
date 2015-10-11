@@ -12,7 +12,10 @@ class Grid(object):
 
    def set_active(self, x, y):
       self.cells[(x, y)] = 1
-   
+
+   def get_active(self):
+      return self.cells.keys()
+
    def get_new_state(self, x, y):
       around = [self.get_state(x + dx, y + dy) for dx, dy in AROUND]
       count = sum(around)
@@ -31,8 +34,11 @@ class Grid(object):
          return 0 
          
       raise Exception("!")
-      
-   def next():
-      pass
+         
+   def next(self):
+      grid = Grid()
+      all_x = {x for x, _ in self.get_active()}
+      all_y = {y for _, y in self.get_active()}
+      return grid
 
    
